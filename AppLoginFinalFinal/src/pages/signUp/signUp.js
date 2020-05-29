@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 
 import {StatusBar} from 'react-native';
 
-
-import { register } from  '../../providers/userProvider';
+import {register} from '../../providers/userProvider';
 
 import {
   Container,
@@ -35,13 +34,24 @@ export default class SignUp extends Component {
 
   registerUser = async () => {
     const {email, password} = this.state;
-    if (email !== '' && email !== undefined) {
-      if (password !== '' && password !== undefined) {
+    if (this.state.email.length === 0 || this.state.password.length === 0) {
+      this.setState(
+        {error: 'Preencha todos os campos para continuar'},
+        () => false,
+      );
+    } else {
+      {
         try {
-          const user = await register(email, password); 
-          this.setState({success:['Usuário cadastrado com sucesso!']}, () => this.props.navigation.navigate('SignIn'))
-        } catch(err) {
-          this.setState({error:[err.message]})
+          const user = await register(email, password);
+          this.setState({success: ['Usuário cadastrado com sucesso!']}, () =>
+            this.props.navigation.navigate('SignIn'),
+          );
+        } catch (err) {
+          this.setState({
+            error: [
+              'Houve um problema com o cadastro, verifique os dados preenchidos',
+            ],
+          });
         }
       }
     }

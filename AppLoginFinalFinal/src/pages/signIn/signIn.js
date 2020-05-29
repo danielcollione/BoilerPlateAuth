@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import { StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 
 import {login} from '../../providers/userProvider';
-
 
 import {
   Container,
@@ -17,43 +16,53 @@ import {
 } from './styles';
 
 export default class SignIn extends Component {
+  static navigationOptions = {
+    header: null,
+  };
 
+  state = {email: '', password: '', error: ''};
 
-    static navigationOptions = {
-        header: null,
-      };
+  handleEmailChange = (email) => {
+    this.setState({email});
+  };
 
-    state = { email: '', password: '', error: '' };
+  handlePasswordChange = (password) => {
+    this.setState({password});
+  };
 
-    handleEmailChange = (email) => {
-        this.setState({ email });
-      };
-      
-      handlePasswordChange = (password) => {
-        this.setState({ password });
-      };
-
-      loginUser = async () => {
-        const {email, password} = this.state;
-        if (email !== '' && email !== undefined) {
-          if (password !== '' && password !== undefined) {
-            try {
-              const user = await login(email, password); 
-              this.setState({success:['Usuário logado com sucesso!']}, () => this.props.navigation.navigate('Main'))
-            } catch(err) {
-              this.setState({error:[err.message]})
-            }
-          }
+  loginUser = async () => {
+    const {email, password} = this.state;
+    if (email.length === 0 || password.length === 0) {
+      this.setState(
+        {error: 'Preencha usuário e senha para continuar'},
+        () => false,
+      );
+    } else {
+      {
+        try {
+          const user = await login(email, password);
+          this.setState({success: ['Usuário logado com sucesso!']}, () =>
+            this.props.navigation.navigate('Main'),
+          );
+        } catch (err) {
+          this.setState({error: ['Credenciais estão erradas']});
         }
-      };
-      
-      
-      
+      }
+    }
+  };
+
+  componentDidMount() {
+    this.setState({email: '', password: ''});
+  }
+
   render() {
     return (
       <Container>
         <StatusBar hidden />
-        <Logo source={require('../../images/yankton.png')} resizeMode="contain" />
+        <Logo
+          source={require('../../images/yankton.png')}
+          resizeMode="contain"
+        />
         <Input
           placeholder="Endereço de e-mail"
           value={this.state.email}
@@ -69,19 +78,19 @@ export default class SignIn extends Component {
           autoCorrect={false}
           secureTextEntry
         />
-        {this.state.error.length !== 0 && <ErrorMessage>{this.state.error}</ErrorMessage>}
+        {this.state.error.length !== 0 && (
+          <ErrorMessage>{this.state.error}</ErrorMessage>
+        )}
         <Button>
           <ButtonText onPress={() => this.loginUser()}>Entrar</ButtonText>
         </Button>
         <SignUpLink>
-          <SignUpLinkText onPress={()=>this.props.navigation.navigate('SignUp')}>Criar conta grátis</SignUpLinkText>
+          <SignUpLinkText
+            onPress={() => this.props.navigation.navigate('SignUp')}>
+            Criar conta grátis
+          </SignUpLinkText>
         </SignUpLink>
       </Container>
     );
   }
-
-  componentDidMount(){
-    this.setState({email: '', password: ''});
-  }
-  
 }

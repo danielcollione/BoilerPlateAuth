@@ -47,9 +47,7 @@ export default class SignIn extends Component {
         }
       };
       
-      componentDidMount(){
-        this.setState({email: '', password: ''});
-      }
+      
       
   render() {
     return (
@@ -81,4 +79,9 @@ export default class SignIn extends Component {
       </Container>
     );
   }
+
+  componentDidMount(){
+    this.setState({email: '', password: ''});
+  }
+  
 }

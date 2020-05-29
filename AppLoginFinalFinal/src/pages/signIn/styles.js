@@ -7,6 +7,8 @@ const Container = styled.View`
   backgroundColor: #F5F5F5;
 `;
 
+
+
 const Logo = styled.Image`
   height: 30%;
   marginBottom: 40px;

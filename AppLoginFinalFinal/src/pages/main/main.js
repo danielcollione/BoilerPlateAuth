@@ -1,13 +1,25 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
 
-import { View, Text } from 'react-native';
-
-// import styles from './styles';
+import {
+  Container, 
+  Logo,
+  MainText
+} from './styles';
 
 const Main = () => (
-  <View>
-    <Text>Main</Text>
-  </View>
+  
+  <Container>
+    <StatusBar hidden />
+        <Logo
+          source={require('../../images/yankton.png')}
+          resizeMode="contain"
+        />
+        <MainText>
+          Seja Bem-Vindo!
+        </MainText>
+        
+  </Container>
 );
 
 export default Main;

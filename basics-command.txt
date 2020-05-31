@@ -1,0 +1,72 @@
+criando um app react:
+* npx create-react-app nome-do-projeto;
+
+entre na pasta do projeto:
+* cd nome-do-projeto;
+
+rodar o projeto:
+* npm start;
+
+biblioteca de teste:
+* npm install @testing-library/react @testing-library/jest-dom --save-dev;
+
+realizar teste na aplicação:
+* npm test;
+
+instalar bootstrap:
+* npm install react-bootstrap bootstrap --save;
+
+instalar fontawesome:
+* npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome;
+
+instalar biblioteca de roteamento:
+* npm install --save hookrouter;
+
+prop-types:
+* npm install prop-types --save;
+
+app node:
+* npm init;
+* npm install express;
+* npm body parser;
+* npm cors;
+* npm uuid;
+* node index.js; //rodar API
+
+axios biblioteca:
+* npm install axios --save
+
+importação calendário react e suporte para BR:
+* npm install react-datepicker date-fns@next --save;
+
+importação formulário Formik:
+* npm install formik yup --save;
+
+Firebase:
+* npm run build;
+* npm install firebase-tools -g //cmd adm
+* firebase login
+* firebase init
+* firebase deploy
+* firebase hosting: disable
+* yarn add react-native-firebase
+* react-native-link react-native-firebase
+
+Redux: 
+* npm install --save redux
+* npm install --save react-redux
+* npm install --save redux-thunk
+
+React Native :
+* create-react-app 'nome'
+* react-native run-ios
+* react-native run-android
+* npm install --save react-native-router-flux
+* react-native-link react-native-firebase
+
+React Native w/ Firebase: 
+* yarn add react-native-firebase
+* react-native-link react-native-firebase
+
+Genymotion:
+* adb devices
